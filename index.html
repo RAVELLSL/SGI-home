@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos SGI</title>
+  <!-- Importação da fonte Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset e configurações básicas */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8; /* Fundo claro */
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    /* Container dos cards */
+    .container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    /* Estilo dos cards */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: calc(50% - 20px);
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .card h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #5563DE;
+    }
+    .card p {
+      font-size: 1em;
+      line-height: 1.6;
+    }
+    /* Responsividade para smartphones */
+    @media (max-width: 768px) {
+      .card {
+        width: 100%;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Projetos SGI</h1>
+  <div class="container">
+    <a href="https://ravellsl.github.io/SGI-lista-de-compras/" class="card" target="_blank">
+      <h2>SGI Lista de Compras</h2>
+      <p>Gerencie sua lista de compras de forma prática e organizada.</p>
+    </a>
+    <a href="https://ravellsl.github.io/SGI-controle-consultas-m-dicas/" class="card" target="_blank">
+      <h2>SGI Controle Consultas M Dicas</h2>
+      <p>Controle suas consultas e receba dicas para facilitar seu dia a dia.</p>
+    </a>
+    <a href="https://ravellsl.github.io/SGI-planejador-dietas-refeicoes/" class="card" target="_blank">
+      <h2>SGI Planejador Dietas Refeições</h2>
+      <p>Planeje suas dietas e refeições com uma ferramenta intuitiva.</p>
+    </a>
+    <a href="https://ravellsl.github.io/SGI-cadeno-notas/" class="card" target="_blank">
+      <h2>SGI Cadeno Notas</h2>
+      <p>Mantenha suas notas organizadas e sempre à mão com este aplicativo.</p>
+    </a>
+  </div>
+</body>
+</html>
