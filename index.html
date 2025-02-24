@@ -3,68 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos SGI</title>
-  <!-- Importação da fonte Google Fonts -->
+  <title>SGI</title>
+  <!-- Importação das fontes Google Fonts: Orbitron para títulos e Poppins para o corpo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset e configurações básicas */
+    /* Reset básico */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    /* Animação de fundo gradiente dinâmico */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f8f8; /* Fundo claro */
-      margin: 0;
-      padding: 20px;
-      color: #333;
+      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #4e4376);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
     h1 {
-      text-align: center;
-      color: #333;
-      font-size: 2em;
-      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(0, 249, 255, 0.8);
     }
-    /* Container dos cards */
     .container {
       width: 100%;
-      max-width: 800px;
+      max-width: 1000px;
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
-    /* Estilo dos cards */
     .card {
-      background: #fff;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       padding: 20px;
       text-decoration: none;
-      color: #333;
+      color: #fff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: calc(50% - 20px);
+      backdrop-filter: blur(5px);
     }
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0, 249, 255, 0.7);
     }
     .card h2 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-      color: #5563DE;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #00f9ff;
+      text-shadow: 0 0 8px #00f9ff;
     }
     .card p {
       font-size: 1em;
       line-height: 1.6;
+    }
+    /* Efeito de ripple interativo ao clicar */
+    .card .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
     /* Responsividade para smartphones */
     @media (max-width: 768px) {
@@ -72,7 +99,7 @@
         width: 100%;
       }
       h1 {
-        font-size: 1.8em;
+        font-size: 2.5em;
       }
       body {
         padding: 10px;
@@ -81,7 +108,7 @@
   </style>
 </head>
 <body>
-  <h1>Projetos SGI</h1>
+  <h1>SGI</h1>
   <div class="container">
     <a href="https://ravellsl.github.io/SGI-lista-de-compras/" class="card" target="_blank">
       <h2>Lista de Compras</h2>
@@ -100,5 +127,23 @@
       <p>Mantenha suas notas organizadas e sempre à mão com este aplicativo.</p>
     </a>
   </div>
+  <script>
+    // Adiciona efeito ripple interativo ao clicar nos cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        this.appendChild(ripple);
+        const maxDim = Math.max(this.offsetWidth, this.offsetHeight);
+        ripple.style.width = ripple.style.height = maxDim + 'px';
+        const rect = this.getBoundingClientRect();
+        ripple.style.left = e.clientX - rect.left - maxDim / 2 + 'px';
+        ripple.style.top = e.clientY - rect.top - maxDim / 2 + 'px';
+        ripple.addEventListener('animationend', () => {
+          ripple.remove();
+        });
+      });
+    });
+  </script>
 </body>
 </html>
