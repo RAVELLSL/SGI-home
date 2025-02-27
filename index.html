@@ -3,103 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SGI</title>
-  <!-- Importação das fontes Google Fonts: Orbitron para títulos e Poppins para o corpo -->
+  <meta name="description" content="Projetos SGI - Ferramentas práticas para gerenciar listas de compras, consultas médicas, dietas e notas.">
+  <meta name="keywords" content="SGI, lista de compras, consultas médicas, planejador de dietas, caderno de notas">
+  <title>Projetos SGI</title>
+  <!-- Importação otimizada da fonte Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset básico */
+    /* ===========================
+       RESET E CONFIGURAÇÕES BÁSICAS
+       =========================== */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-    /* Animação de fundo gradiente dinâmico */
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #4e4376);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #fff;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+      color: #333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
     }
+
+    /* ===========================
+       TIPOGRAFIA
+       =========================== */
     h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3em;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      text-shadow: 0 0 10px rgba(0, 249, 255, 0.8);
+      text-align: center;
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 30px;
     }
+
+    /* ===========================
+       LAYOUT
+       =========================== */
     .container {
       width: 100%;
-      max-width: 1000px;
+      max-width: 800px;
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
+
+    /* ===========================
+       COMPONENTES
+       =========================== */
     .card {
-      position: relative;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 20px;
       text-decoration: none;
-      color: #fff;
+      color: #333;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: calc(50% - 20px);
-      backdrop-filter: blur(5px);
+      cursor: pointer; /* Feedback visual para links clicáveis */
     }
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 6px 20px rgba(0, 249, 255, 0.7);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
     .card h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      color: #00f9ff;
-      text-shadow: 0 0 8px #00f9ff;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #5563DE;
     }
     .card p {
       font-size: 1em;
       line-height: 1.6;
     }
-    /* Efeito de ripple interativo ao clicar */
-    .card .ripple {
-      position: absolute;
-      border-radius: 50%;
-      transform: scale(0);
-      animation: ripple 0.6s linear;
-      background: rgba(255, 255, 255, 0.4);
-    }
-    @keyframes ripple {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
-    }
-    /* Responsividade para smartphones */
+
+    /* ===========================
+       RESPONSIVIDADE
+       =========================== */
     @media (max-width: 768px) {
       .card {
         width: 100%;
       }
       h1 {
-        font-size: 2.5em;
+        font-size: 1.8em;
       }
       body {
         padding: 10px;
@@ -108,46 +99,34 @@
   </style>
 </head>
 <body>
-  <h1>SGI</h1>
+  <h1>Projetos SGI</h1>
   <div class="container">
-    <a href="https://ravellsl.github.io/SGI-lista-de-compras/" class="card" target="_blank">
+    <a href="https://ravellsl.github.io/SGI-lista-de-compras/" class="card" target="_blank" aria-label="Lista de Compras">
       <h2>Lista de Compras</h2>
       <p>Gerencie sua lista de compras de forma prática e organizada.</p>
     </a>
-    <a href="https://ravellsl.github.io/SGI-controle-consultas-m-dicas/" class="card" target="_blank">
-      <h2>Controle Consultas Médicas</h2>
+    <a href="https://ravellsl.github.io/SGI-controle-consultas-m-dicas/" class="card" target="_blank" aria-label="Controle de Consultas Médicas">
+      <h2>Controle de Consultas Médicas</h2>
       <p>Controle suas consultas e receba dicas para facilitar seu dia a dia.</p>
     </a>
-    <a href="https://ravellsl.github.io/SGI-planejador-dietas-refeicoes/" class="card" target="_blank">
-      <h2>Planejador Dietas Refeições</h2>
+    <a href="https://ravellsl.github.io/SGI-planejador-dietas-refeicoes/" class="card" target="_blank" aria-label="Planejador de Dietas e Refeições">
+      <h2>Planejador de Dietas e Refeições</h2>
       <p>Planeje suas dietas e refeições com uma ferramenta intuitiva.</p>
     </a>
-    <a href="https://ravellsl.github.io/SGI-cadeno-notas/" class="card" target="_blank">
-      <h2>Cadeno Notas</h2>
+    <a href="https://ravellsl.github.io/SGI-cadeno-notas/" class="card" target="_blank" aria-label="aderno de Notas">
+      <h2>Caderno de Notas</h2>
       <p>Mantenha suas notas organizadas e sempre à mão com este aplicativo.</p>
     </a>
-     <a href="https://ravellsl.github.io/SGI-adm-medicamentos/" class="card" target="_blank">
+
+    <a href="https://ravellsl.github.io/SGI-adm-medicamentos/" class="card" target="_blank">
       <h2>Administração de Medicamentos</h2>
       <p>Mantenha sua rotina de medicamentos organizada realizando uma gestão fácil e inteligente.</p>
     </a>
+
+    <a href="https://ravellsl.github.io/SGI-cardapio-digital/" class="card" target="_blank" aria-label="Cardápio Digital">
+      <h2>Cardápio Digital</h2>
+      <p>Organize o cardápio da sua semana de maneira inteligente e estruturada.</p>
+    </a>
   </div>
-  <script>
-    // Adiciona efeito ripple interativo ao clicar nos cards
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        this.appendChild(ripple);
-        const maxDim = Math.max(this.offsetWidth, this.offsetHeight);
-        ripple.style.width = ripple.style.height = maxDim + 'px';
-        const rect = this.getBoundingClientRect();
-        ripple.style.left = e.clientX - rect.left - maxDim / 2 + 'px';
-        ripple.style.top = e.clientY - rect.top - maxDim / 2 + 'px';
-        ripple.addEventListener('animationend', () => {
-          ripple.remove();
-        });
-      });
-    });
-  </script>
 </body>
 </html>
