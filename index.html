@@ -16,9 +16,11 @@
        VARIÁVEIS & RESET
     ================================= */
     :root {
-      --bg-main: #e0f7fa;
-      --glass-bg: rgba(255, 255, 255, 0.85);
+      --bg-main: #f0f8ff;
+      --glass-bg: rgba(255, 255, 255, 0.9);
       --text-color: #333333;
+      --gradient-start: #00c6ff;
+      --gradient-end: #0072ff;
     }
     * {
       margin: 0;
@@ -74,7 +76,7 @@
        GRADIENTE PARA TÍTULOS
     ================================= */
     .gradient-text {
-      background: linear-gradient(45deg, #2c3e50, #000000);
+      background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
