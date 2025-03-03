@@ -5,119 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Projetos SGI - Ferramentas práticas para gerenciar listas, consultas, dietas, notas e cuidados com pets.">
   <meta name="keywords" content="SGI, lista de compras, consultas médicas, planejador de dietas, caderno de notas, cuidados com pets">
-  <title>Projetos SGI</title>
-  <!-- Pré-conexão para carregamento rápido das fontes -->
+  <title>Projetos SGI - Pastel Dream Escurecido</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Importando fontes: Orbitron para títulos e Poppins para textos -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* ================================
-       VARIÁVEIS & RESET
-    ================================= */
     :root {
-      --bg-main: #f0f8ff;
-      --glass-bg: rgba(255, 255, 255, 0.9);
+      /* Fundo claro e neutro */
+      --bg-main: #f9f9fb;
+      --glass-bg: #ffffff;
       --text-color: #333333;
-      --gradient-start: #00c6ff;
-      --gradient-end: #0072ff;
+      /* Cores realçadas com tonalidades um pouco mais escuras */
+      --gradient-start: #5c90af;  /* Azul pastel ainda mais escuro */
+      --gradient-end:   #e6b91f;  /* Amarelo mais saturado e levemente escurecido */
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    /* ================================
-       FUNDO ANIMADO
-    ================================= */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg-main);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       padding: 20px;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      top: -10%;
-      left: -10%;
-      width: 120%;
-      height: 120%;
-      background: radial-gradient(circle at center, #ffffff, var(--bg-main) 70%);
-      background-size: 150% 150%;
-      animation: pulseBg 25s ease-in-out infinite;
-      z-index: -2;
-    }
-    @keyframes pulseBg {
-      0%   { transform: scale(1); opacity: 1; }
-      50%  { transform: scale(1.05); opacity: 0.97; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        radial-gradient(circle, rgba(127, 219, 255, 0.05) 1px, transparent 1px),
-        radial-gradient(circle, rgba(127, 219, 255, 0.05) 1px, transparent 1px);
-      background-position: 0 0, 25px 25px;
-      background-size: 50px 50px;
-      z-index: -1;
-      opacity: 0.5;
-    }
-    /* ================================
-       GRADIENTE PARA TÍTULOS
-    ================================= */
-    .gradient-text {
-      background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    /* ================================
-       CONTAINER GLASSMORPHISM
-    ================================= */
     .container {
-      width: 100%;
       max-width: 1200px;
       background: var(--glass-bg);
-      padding: 40px 30px;
+      margin: 0 auto;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      margin: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-    /* ================================
-       TÍTULO PRINCIPAL
-    ================================= */
     h1 {
       text-align: center;
       font-family: 'Orbitron', sans-serif;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       font-size: 2.2em;
     }
-    /* ================================
-       CATEGORIAS
-    ================================= */
-    .category {
-      margin-bottom: 60px;
-    }
-    .category-title {
-      font-family: 'Orbitron', sans-serif;
-      text-align: center;
+    /* Abas (Tabs) */
+    .tabs {
+      display: flex;
+      justify-content: center;
       margin-bottom: 30px;
-      font-size: 2em;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    /* ================================
-       GRID DE CARDS
-    ================================= */
+    .tab-button {
+      padding: 10px 20px;
+      border: none;
+      background: var(--gradient-start);
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .tab-button:hover,
+    .tab-button.active {
+      background: var(--gradient-end);
+    }
+    .tab-content .tab-panel {
+      display: none;
+    }
+    .tab-content .tab-panel.active {
+      display: block;
+    }
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -127,21 +76,17 @@
     .card {
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 20px;
       text-decoration: none;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 100%;
-      max-width: 320px;
     }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
     .card h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.6em;
@@ -152,27 +97,15 @@
       line-height: 1.6;
       color: var(--text-color);
     }
-    /* ================================
-       RESPONSIVIDADE
-    ================================= */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-      }
-      .category-title {
-        font-size: 1.8em;
-      }
-      .container {
-        padding: 30px 20px;
-      }
+    .gradient-text {
+      background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+    /* Responsividade */
     @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8em;
-      }
-      .category-title {
-        font-size: 1.6em;
-      }
+      h1 { font-size: 1.8em; }
+      .tab-button { font-size: 0.9em; padding: 8px 15px; }
     }
   </style>
 </head>
@@ -180,74 +113,100 @@
   <div class="container">
     <h1 class="gradient-text">Projetos SGI</h1>
     
-    <!-- Organização Pessoal -->
-    <div class="category">
-      <h2 class="category-title gradient-text">Organização Pessoal</h2>
-      <div class="cards">
-        <a href="https://ravellsl.github.io/SGI-lista-de-compras/" class="card" target="_blank" aria-label="Lista de Compras">
-          <h2 class="gradient-text">Lista de Compras</h2>
-          <p>Gerencie suas compras com listas personalizadas, otimizando o planejamento e o controle financeiro.</p>
-        </a>
-        <a href="https://ravellsl.github.io/SGI-cadeno-notas/" class="card" target="_blank" aria-label="Caderno de Notas">
-          <h2 class="gradient-text">Caderno de Notas</h2>
-          <p>Registre ideias, tarefas e lembretes importantes de forma organizada e prática.</p>
-        </a>
-        <a href="https://ravellsl.github.io/SGI-rotinas-estudo/" class="card" target="_blank" aria-label="Rotinas de Estudo">
-          <h2 class="gradient-text">Rotinas de Estudo</h2>
-          <p>Crie e acompanhe cronogramas de estudos para maximizar sua produtividade e desempenho.</p>
-        </a>
-        <a href="https://ravellsl.github.io/SGI-organizador-rotinas-domesticas/" class="card" target="_blank" aria-label="Organizador de Rotinas Domésticas">
-          <h2 class="gradient-text">Organizador de Rotinas Domésticas</h2>
-          <p>Gerencie suas tarefas e rotinas domésticas de forma simples e eficiente.</p>
-        </a>
-        <a href="https://ravellsl.github.io/SGI-reparos-domesticos/" class="card" target="_blank" aria-label="Solução para Pequenos Problemas Domésticos">
-          <h2 class="gradient-text">Solução para Pequenos Problemas Domésticos</h2>
-          <p>Resolva pequenos reparos e problemas domésticos de forma prática e rápida.</p>
-        </a>
-      </div>
+    <div class="tabs">
+      <button class="tab-button active" data-target="organizacao">Organização Pessoal</button>
+      <button class="tab-button" data-target="saude">Saúde e Bem-Estar</button>
+      <button class="tab-button" data-target="alimentacao">Alimentação</button>
+      <button class="tab-button" data-target="pets">Pets</button>
     </div>
     
-    <!-- Saúde e Bem-Estar -->
-    <div class="category">
-      <h2 class="category-title gradient-text">Saúde e Bem-Estar</h2>
-      <div class="cards">
-        <a href="https://ravellsl.github.io/SGI-controle-consultas-m-dicas/" class="card" target="_blank" aria-label="Consultas Médicas">
-          <h2 class="gradient-text">Consultas Médicas</h2>
-          <p>Mantenha um histórico detalhado de suas consultas e agende novas visitas com facilidade e organização.</p>
-        </a>
-        <a href="https://ravellsl.github.io/SGI-adm-medicamentos/" class="card" target="_blank" aria-label="Administração de Medicamentos">
-          <h2 class="gradient-text">Administração de Medicamentos</h2>
-          <p>Gerencie seu tratamento com lembretes e registros precisos, garantindo o uso correto dos medicamentos.</p>
-        </a>
+    <div class="tab-content">
+      <!-- Aba: Organização Pessoal -->
+      <div id="organizacao" class="tab-panel active">
+        <h2 class="gradient-text" style="text-align:center; margin-bottom:20px;">Organização Pessoal</h2>
+        <div class="cards">
+          <a href="https://ravellsl.github.io/SGI-lista-de-compras/" class="card" target="_blank" aria-label="Lista de Compras">
+            <h2 class="gradient-text">Lista de Compras</h2>
+            <p>Gerencie suas compras com listas personalizadas, otimizando o planejamento e o controle financeiro.</p>
+          </a>
+          <a href="https://ravellsl.github.io/SGI-cadeno-notas/" class="card" target="_blank" aria-label="Caderno de Notas">
+            <h2 class="gradient-text">Caderno de Notas</h2>
+            <p>Registre ideias, tarefas e lembretes importantes de forma organizada e prática.</p>
+          </a>
+          <a href="https://ravellsl.github.io/SGI-rotinas-estudo/" class="card" target="_blank" aria-label="Rotinas de Estudo">
+            <h2 class="gradient-text">Rotinas de Estudo</h2>
+            <p>Crie e acompanhe cronogramas de estudos para maximizar sua produtividade e desempenho.</p>
+          </a>
+          <a href="https://ravellsl.github.io/SGI-organizador-rotinas-domesticas/" class="card" target="_blank" aria-label="Organizador de Rotinas Domésticas">
+            <h2 class="gradient-text">Organizador de Rotinas Domésticas</h2>
+            <p>Gerencie suas tarefas e rotinas domésticas de forma simples e eficiente.</p>
+          </a>
+          <a href="https://ravellsl.github.io/SGI-reparos-domesticos/" class="card" target="_blank" aria-label="Solução para Pequenos Problemas Domésticas">
+            <h2 class="gradient-text">Solução para Pequenos Problemas Domésticas</h2>
+            <p>Resolva pequenos reparos e problemas domésticos de forma prática e rápida.</p>
+          </a>
+          <a href="https://ravellsl.github.io/SGI-controle-assinaturas/" class="card" target="_blank" aria-label="Controle de Assinaturas">
+            <h2 class="gradient-text">Controle de Assinaturas</h2>
+            <p>Gerencie suas assinaturas e mantenha o controle dos serviços e pagamentos recorrentes.</p>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Aba: Saúde e Bem-Estar -->
+      <div id="saude" class="tab-panel">
+        <h2 class="gradient-text" style="text-align:center; margin-bottom:20px;">Saúde e Bem-Estar</h2>
+        <div class="cards">
+          <a href="https://ravellsl.github.io/SGI-controle-consultas-m-dicas/" class="card" target="_blank" aria-label="Consultas Médicas">
+            <h2 class="gradient-text">Consultas Médicas</h2>
+            <p>Mantenha um histórico detalhado de suas consultas e agende novas visitas com facilidade e organização.</p>
+          </a>
+          <a href="https://ravellsl.github.io/SGI-adm-medicamentos/" class="card" target="_blank" aria-label="Administração de Medicamentos">
+            <h2 class="gradient-text">Administração de Medicamentos</h2>
+            <p>Gerencie seu tratamento com lembretes e registros precisos, garantindo o uso correto dos medicamentos.</p>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Aba: Alimentação -->
+      <div id="alimentacao" class="tab-panel">
+        <h2 class="gradient-text" style="text-align:center; margin-bottom:20px;">Alimentação</h2>
+        <div class="cards">
+          <a href="https://ravellsl.github.io/SGI-planejador-dietas-refeicoes/" class="card" target="_blank" aria-label="Dietas e Refeições">
+            <h2 class="gradient-text">Dietas e Refeições</h2>
+            <p>Elabore planos alimentares balanceados e customize suas refeições para atender às suas metas de saúde.</p>
+          </a>
+          <a href="https://ravellsl.github.io/SGI-cardapio-digital/" class="card" target="_blank" aria-label="Cardápio Digital">
+            <h2 class="gradient-text">Cardápio Digital</h2>
+            <p>Organize o cardápio semanal de forma dinâmica, facilitando a preparação e o planejamento das refeições.</p>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Aba: Pets -->
+      <div id="pets" class="tab-panel">
+        <h2 class="gradient-text" style="text-align:center; margin-bottom:20px;">Pets</h2>
+        <div class="cards">
+          <a href="https://ravellsl.github.io/SGI-cuidado-pets/" class="card" target="_blank" aria-label="Cuidados com Pets">
+            <h2 class="gradient-text">Cuidados com Pets</h2>
+            <p>Cuide do bem-estar do seu pet com registros, lembretes e dicas personalizadas para sua saúde.</p>
+          </a>
+        </div>
       </div>
     </div>
-    
-    <!-- Alimentação -->
-    <div class="category">
-      <h2 class="category-title gradient-text">Alimentação</h2>
-      <div class="cards">
-        <a href="https://ravellsl.github.io/SGI-planejador-dietas-refeicoes/" class="card" target="_blank" aria-label="Dietas e Refeições">
-          <h2 class="gradient-text">Dietas e Refeições</h2>
-          <p>Elabore planos alimentares balanceados e customize suas refeições para atender às suas metas de saúde.</p>
-        </a>
-        <a href="https://ravellsl.github.io/SGI-cardapio-digital/" class="card" target="_blank" aria-label="Cardápio Digital">
-          <h2 class="gradient-text">Cardápio Digital</h2>
-          <p>Organize o cardápio semanal de forma dinâmica, facilitando a preparação e o planejamento das refeições.</p>
-        </a>
-      </div>
-    </div>
-    
-    <!-- Pets -->
-    <div class="category">
-      <h2 class="category-title gradient-text">Pets</h2>
-      <div class="cards">
-        <a href="https://ravellsl.github.io/SGI-cuidado-pets/" class="card" target="_blank" aria-label="Cuidados com Pets">
-          <h2 class="gradient-text">Cuidados com Pets</h2>
-          <p>Cuide do bem-estar do seu pet com registros, lembretes e dicas personalizadas para sua saúde.</p>
-        </a>
-      </div>
-    </div>
-    
   </div>
+  
+  <script>
+    // Script simples para alternar as abas
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-panel');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.getAttribute('data-target')).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
